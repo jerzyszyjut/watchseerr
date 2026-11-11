@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "watchseerr"
+dynamic = ["version"]
+description = "Request the films and series on Letterboxd and Serializd watchlists in Seerr"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = []
+keywords = ["seerr", "jellyseerr", "overseerr", "letterboxd", "serializd", "radarr", "sonarr"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Topic :: Multimedia :: Video",
+]
+
+[project.urls]
+Homepage = "https://github.com/jerzyszyjut/watchseerr"
+
+[project.scripts]
+watchseerr = "watchseerr.cli:main"
+
+[tool.setuptools]
+packages = ["watchseerr"]
+
+[tool.setuptools.dynamic]
+version = { attr = "watchseerr.__version__" }

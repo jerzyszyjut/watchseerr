@@ -1,0 +1,32 @@
+# Copy to watchseerr.toml and edit. Every key but seerr.url and one source
+# is optional.
+
+# How often --daemon runs a pass (the NixOS module uses a systemd timer instead).
+interval = "6h"
+
+# A safety net for the first run of a long watchlist: anything over this is
+# left for the next pass.
+max_requests_per_run = 25
+
+# Where requests and the Letterboxd slug cache are remembered.
+# Default: $STATE_DIRECTORY/state.json, else ~/.local/state/watchseerr/state.json
+# state_file = "/var/lib/watchseerr/state.json"
+
+[seerr]
+url = "http://localhost:5055"
+# The API key (Seerr → Settings → General). Prefer a file or the
+# WATCHSEERR_SEERR_API_KEY environment variable to putting it here.
+api_key_file = "/run/secrets/seerr-api-key"
+
+[[sources]]
+type = "letterboxd"
+user = "alice"            # letterboxd.com/alice
+# list = "to-watch-2026"  # letterboxd.com/alice/list/to-watch-2026/ instead of the watchlist
+seerr_user = "alice"      # request as this Seerr user (id, username, display name or email)
+# initial = "skip"        # on first sight, remember the list as it is and only request what is added later
+
+[[sources]]
+type = "serializd"
+user = "alice"            # serializd.com/user/alice
+seasons = "watchlisted"   # just the seasons on the watchlist, or "all"
+seerr_user = "alice"
